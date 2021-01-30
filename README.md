@@ -1,5 +1,5 @@
 # MQTT-humidity-and-temperature
-This Arduino program is a temperature and humidity logging program for use in collection the data once a minute and posting via WiFi using the MQTT protcol.
+This Arduino program is a temperature and humidity logging program for use in collecting the data once a minute and posting via WiFi using the MQTT protcol.
 The hardware collecting the data is an Adafruit ESP32 Feather Huzzah MCU board and an Adafruit AHT20 Temperature and Humidity I2C sensor board.
 It's part of a system where the agent collecting the data is a Raspberry Pi 4 in my case running a Docker container system with the following:
   Mosquitto MQTT Broker
