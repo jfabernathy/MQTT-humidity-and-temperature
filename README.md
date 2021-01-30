@@ -9,3 +9,6 @@ It's part of a system where the agent collecting the data is a Raspberry Pi 4 in
 The RPI4 and the ESP32 board are on the same network. The ESP32 is fairly remote and error correction for WiFi failure in included.
 The data format posted by the ESP32 is in a format that works for influxDB which is a Array of objects. The first object is the environment data and the 2nd object is the location. This allows for multiple MCUs in different location.
 An example of the data is [{"Temperature": 72.0, "Humidity": 40.1}, {"Location": "basement"}]
+Because this program would run for many hours then just stop running and not post any data, it was necessary to implement a watchdog timer.  Since the loop time of postings was 60 seconds I made the WDT set for 70 seconds.
+Since I'm using Deep Sleep after each posting, the code is written as a setup only, no loop. So if the MCU doesn't wake up on time or if the code is stuff somewhere, the WDT resets the board and it continues.
+The WDT has been seen to work for me. If this shows not to work reliably, I'll implement an external WDT that trips the power to the MCU.
