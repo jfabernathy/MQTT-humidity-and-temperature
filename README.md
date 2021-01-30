@@ -12,3 +12,5 @@ An example of the data is [{"Temperature": 72.0, "Humidity": 40.1}, {"Location":
 Because this program would run for many hours then just stop running and not post any data, it was necessary to implement a watchdog timer.  Since the loop time of postings was 60 seconds I made the WDT set for 70 seconds.
 Since I'm using Deep Sleep after each posting, the code is written as a setup only, no loop. So if the MCU doesn't wake up on time or if the code is stuff somewhere, the WDT resets the board and it continues.
 The WDT has been seen to work for me. If this shows not to work reliably, I'll implement an external WDT that trips the power to the MCU.
+
+I've included the Nodered flow I used and that has both the MQTT input and one for HTTP since some of my MCUs are using circuitpython which does not have MQTT libraries at this time.
