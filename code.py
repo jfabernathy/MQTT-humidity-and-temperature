@@ -1,3 +1,6 @@
+# this is the circuitpython program for posting environment data to NodeRed
+#  It's been tested on a Metro ESP32-S2 Express board from Adafruit
+
 import socketpool
 import ssl
 import adafruit_requests as requests

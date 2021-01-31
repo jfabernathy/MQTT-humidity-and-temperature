@@ -1,3 +1,6 @@
+# this is the python program for Raspberry Pi OS
+# It has been tested on a RPI 3 
+#
 import paho.mqtt.client as mqtt # Import the MQTT library
 import json
 import time # The time library is useful for delays
