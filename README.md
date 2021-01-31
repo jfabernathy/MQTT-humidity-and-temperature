@@ -11,7 +11,8 @@ It's part of a system where the agent collecting the data is a Raspberry Pi 4 in
   
   grafana for charting
 
-The RPI4 and the ESP32 board are on the same network. The ESP32 is fairly remote and error correction for WiFi failure in included.
+The RPI4 and the ESP32 board are on the same network. The ESP32 is fairly remote and error correction for WiFi failure in included. There is also a watchdog timer used in case the code or MCU just quits working. The WDT will just reset the system.
+
 The data format posted by the ESP32 is in a format that works for influxDB which is a Array of objects. The first object is the environment data and the 2nd object is the location. This allows for multiple MCUs in different location.
 An example of the data is:
 
