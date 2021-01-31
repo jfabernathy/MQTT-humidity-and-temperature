@@ -4,8 +4,11 @@ The hardware collecting the data is an Adafruit ESP32 Feather Huzzah MCU board a
 It's part of a system where the agent collecting the data is a Raspberry Pi 4 in my case running a Docker container system with the following:
 
   Mosquitto MQTT Broker
-  NodeRed 
+  
+  NodeRed
+  
   influxDB database
+  
   grafana for charting
 
 The RPI4 and the ESP32 board are on the same network. The ESP32 is fairly remote and error correction for WiFi failure in included.
