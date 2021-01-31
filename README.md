@@ -24,9 +24,9 @@ The WDT has been seen to work for me. If this shows not to work reliably, I'll i
 I've included the Nodered flow I used and that has both the MQTT input and one for HTTP since some of my MCUs are using circuitpython which does not have MQTT libraries at this time.
 
 The Arduino program is intented to be used on an ESP32 board like the Adafruit ESP32 Feather Huzzah.  I'm also using a Raspberry Pi 3 to read sensors and post that data to the same server.
-That RPI3 code is written in Python and and usess the MQTT libraries from https://pypi.org/project/paho-mqtt/ and I used the Adafruit Blink library for the temp. and humidity sensors.
+That RPI3 code is written in Python and and uses the MQTT libraries from https://pypi.org/project/paho-mqtt/ and I used the Adafruit Blink library for the temperature and humidity sensors.
 
-I also did a verions of the application in circuitpython for the Metro ESP32-S2 Express board from Adafruit. Since the circuitpython libraries for MQTT are not available yet, I used HTTP Post calls.  NodeRed handles both.
+I also did a verions of the application in CircuitPython for the Metro ESP32-S2 Express board from Adafruit. Since the CircuitPython libraries for MQTT are not available yet, I used HTTP Post calls.  NodeRed handles both.
 
 I've included those programs.
 
