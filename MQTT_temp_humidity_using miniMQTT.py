@@ -1,3 +1,4 @@
+# miniMQTT version of program for Metro ESP32-S2
 import socketpool
 import ssl
 import adafruit_minimqtt.adafruit_minimqtt as MQTT
