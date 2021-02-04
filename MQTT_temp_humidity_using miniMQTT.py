@@ -1,17 +1,22 @@
-# this is the circuitpython program for posting environment data to NodeRed
-#  It's been tested on a Metro ESP32-S2 Express board from Adafruit
-
 import socketpool
 import ssl
-import adafruit_requests as requests
+import adafruit_minimqtt.adafruit_minimqtt as MQTT
 import wifi
 import time
 import board
 import adafruit_ahtx0
 import alarm
 import busio
+
+PUBLISH_DELAY = 60
+MQTT_TOPIC = "environmentTopic"
+USE_DEEP_SLEEP = True
+
 from microcontroller import watchdog as w
 from watchdog import WatchDogMode
+w.timeout=70 # Set a timeout of 70 seconds
+w.mode = WatchDogMode.RESET
+w.feed()
 
 def alarm_deepSleep(how_long):
     time_alarm = alarm.time.TimeAlarm(monotonic_time=time.monotonic() + how_long)
@@ -23,10 +28,9 @@ def debug_log(msg):
 
 def post_data(msg):
     try:
-        socket = socketpool.SocketPool(wifi.radio)
-        https = requests.Session(socket, ssl.create_default_context())
-        response = https.post(JSON_POST_URL, data=data)
-        json_resp = response.json()
+        mqtt_client.connect()
+        mqtt_client.publish(MQTT_TOPIC, msg)
+        mqtt_client.disconnect()
     except Exception as e:
         print("Exception in post_data ", str(e))
         uart.write(bytearray("\n\rException in post_data " + str(e)))
@@ -38,8 +42,8 @@ w.feed()
 
 # Create the sensor object using I2C
 sensor = adafruit_ahtx0.AHTx0(board.I2C())
-from adafruit_lc709203f import LC709203F
 
+from adafruit_lc709203f import LC709203F
 sensor2 = LC709203F(board.I2C())
 
 uart = busio.UART(board.TX, board.RX, baudrate=115200)
@@ -64,7 +68,18 @@ debug_log("Connected to %s!"%secrets["ssid"])
 
 debug_log("My IP address is " + str(wifi.radio.ipv4_address))
 
-JSON_POST_URL = "http://192.168.0.25:1880/myserver"  # URL for my NodeRed server
+# Create a socket pool
+pool = socketpool.SocketPool(wifi.radio)
+
+# Set up a MiniMQTT Client
+mqtt_client = MQTT.MQTT(
+    broker=secrets["mqtt_broker"],
+    port=secrets["mqtt_port"],
+    username=secrets["mqtt_username"],
+    password=secrets["mqtt_password"],
+    socket_pool=pool,
+    ssl_context=ssl.create_default_context(),
+)
 
 x = round(sensor.temperature * 1.8 + 32.0, 1)
 y = round(sensor.relative_humidity, 1)
@@ -78,9 +93,6 @@ cell_percent = str(sensor2.cell_percent)
 # 1st is readings, 2nd is tag
 
 data = """[{"Temperature": """ + temp + """ , "Humidity": """ + humid + """}, {"Location": "RV_basement"}]"""
-post_data(data)
-
-data = """[{"Battery Volts ": """ + cell_voltage + """ , "Battery percent": """ + cell_percent + """}, {"Location": "RV_basement"}]"""
 post_data(data)
 
 loop_count = alarm.sleep_memory[5] | alarm.sleep_memory[6] << 8
