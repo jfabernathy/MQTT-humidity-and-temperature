@@ -34,3 +34,5 @@ Once the miniMQTT library became available for CircuitPython, I also built a ver
 
 I've included those programs.
 
+The most recent addition is a CircuitPython program for the Adafruit Magtag e-Ink display and ESP32-S2 board. https://www.adafruit.com/product/4800
+This program using the Magtag.fetch to retrieve over WiFi the most recent temperature and humidity from the influxDB for a given location and displays it on the e-Ink display.  It repeats this every 5 minutes and deep sleeps while waiting.  With the e-ink display retaining the display during deep sleep, it makes an interesting information display where the updating constantly isn't needed.  The Magtag is LiPoly battery powered and can go for days without recharging.
