@@ -8,38 +8,34 @@ This document explains the steps I used to build the data collection system that
 
 I use the IOTStack system that is described at: [https://sensorsiot.github.io/IOTstack/Getting-Started/](https://sensorsiot.github.io/IOTstack/Getting-Started/)
 
-1. Start with a clean fresh install of Raspberry Pi OS Desktop with or without recommended software.
-2. From the IOTStack Getting Started webpage follow along with the steps below.
-3. Run this command:
+- Start with a clean fresh install of Raspberry Pi OS Desktop with or without recommended software.
+- From the IOTStack Getting Started webpage follow along with the steps below.
+- Run this command:
 
 `curl -fsSL https://raw.githubusercontent.com/SensorsIot/IOTstack/master/install.sh | bash`
 
-1. At the popup &quot;Docker and Docker-compose not installed and is required&quot;. default is yes, so [enter]
-2. Reboot when done
-3. cd ~/IOTstack
-4. ./menu.sh
-5. At the popup&quot;Python 3 and Dependencies&quot;, answer yes.
-6. Now in the IOStack Main Menu with &quot;Build Stack&quot; highlighted (make terminal window large so you can see all of the menu)
-7. Go down the list of containers hitting [space] to select the containers you want, which in this case are:
+- At the popup &quot;Docker and Docker-compose not installed and is required&quot;. default is yes, so [enter]
+- Reboot when done
+- `cd ~/IOTstack`
+- `./menu.sh`
+- At the popup&quot;Python 3 and Dependencies&quot;, answer yes.
+- Now in the IOStack Main Menu with &quot;Build Stack&quot; highlighted (make terminal window large so you can see all of the menu)
+- Go down the list of containers hitting [space] to select the containers you want, which in this case are:
 
-grafana
-
-influxdb
-
-mosquitto
-
-nodered
-
-poartainer-ce (Optional)
+grafana  
+influxdb  
+mosquitto  
+nodered  
+poartainer-ce (Optional)  
 
 - On nodered you will see warning in orange. Use [right arrow] for options to fix.  
 - With Select and build addons listed, Press enterto build addons.   
 - Select go back option.  
 - Back on Select Containers to Build page nodered is now marked pass with no warning.  
-8. Hit [enter] to start building and [enter] on the mosquitto question about port number.
-9. Exit
-10. Critical part: edit docer-compose.yml
-11. Make this change in influxdb section:
+- Hit [enter] to start building and [enter] on the mosquitto question about port number.
+- Exit
+- **Critical part: edit docer-compose.yml**
+- Make this change in influxdb section:
 
 image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 
