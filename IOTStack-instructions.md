@@ -32,14 +32,10 @@ nodered
 
 poartainer-ce (Optional)
 
-On nodered you will see warning in orange. Use [right arrow] for options to fix.
-
-With Select and build addons listed, Press enterto build addons. 
-
-Select go back option. 
-
-Back on Select Containers to Build page nodered is now marked pass with no warning. 
-
+- On nodered you will see warning in orange. Use [right arrow] for options to fix.  
+- With Select and build addons listed, Press enterto build addons.   
+- Select go back option.  
+- Back on Select Containers to Build page nodered is now marked pass with no warning.  
 8. Hit [enter] to start building and [enter] on the mosquitto question about port number.
 9. Exit
 10. Critical part: edit docer-compose.yml
@@ -54,14 +50,12 @@ image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 16. There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
 17. You get to the different containers via the web:
 
-you get to nodered from your RPI4 localhost:1880
-
-you get to grafana from your RPI4 localhost:3000 
-
-you get to portainer from your RPI4 localhost:9000
+- you get to nodered from your RPI4 localhost:1880  
+- you get to grafana from your RPI4 localhost:3000  
+- you get to portainer from your RPI4 localhost:9000  
 
 18. From other PC on local network change localhost to IP address of RPI4
-19. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address &quot;mosquitto:1883&quot;. That&#39;s what you see in the MQTT flow node for nodered.
+19. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That&#39;s what you see in the MQTT flow node for nodered.
 20. To run console commands for a container you need to run:
 
 docker exec -it \&lt;containername\&gt; bash
