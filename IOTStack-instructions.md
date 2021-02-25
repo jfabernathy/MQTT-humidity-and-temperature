@@ -32,28 +32,29 @@ nodered
 
 poartainer-ce (Optional)
 
-On nodered you will see warning in orange. Use [right arrow] for options to fix. 
+On nodered you will see warning in orange. Use [right arrow] for options to fix.
+
 With Select and build addons listed, Press enterto build addons. 
+
 Select go back option. 
+
 Back on Select Containers to Build page nodered is now marked pass with no warning. 
 
-1. Hit [enter] to start building and [enter] on the mosquitto question about port number.
-2. Exit
-3. Critical part: edit docer-compose.yml
-4. Make this change in influxdb section:
+8. Hit [enter] to start building and [enter] on the mosquitto question about port number.
+9. Exit
+10. Critical part: edit docer-compose.yml
+11. Make this change in influxdb section:
 
 image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 
-1. We are pinning influxdb to version 1.8.4. That should be it but there are some things to be informed about. See [https://github.com/SensorsIot/IOTstack/issues/265](https://github.com/SensorsIot/IOTstack/issues/265)
-2. Everything should be setup. Since we have not setup any passwords for mosquitto the mosquitto.conf should be okay.
-3. Run &quot;docker-compose up -d&quot;
-4. At this point the containers are built and running.
-5. There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
-6. You get to the different containers via the web:
+12. We are pinning influxdb to version 1.8.4. That should be it but there are some things to be informed about. See [https://github.com/SensorsIot/IOTstack/issues/265](https://github.com/SensorsIot/IOTstack/issues/265)
+13. Everything should be setup. Since we have not setup any passwords for mosquitto the mosquitto.conf should be okay.
+14. Run &quot;docker-compose up -d&quot;
+15. At this point the containers are built and running.
+16. There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
+17. You get to the different containers via the web:
 
-```
 you get to nodered from your RPI4 localhost:1880 you get to grafana from your RPI4 localhost:3000 you get to portainer from your RPI4 localhost:9000
-```
 
 1. From other PC on local network change localhost to IP address of RPI4
 2. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address &quot;mosquitto:1883&quot;. That&#39;s what you see in the MQTT flow node for nodered.
