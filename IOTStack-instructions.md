@@ -54,15 +54,19 @@ image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 16. There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
 17. You get to the different containers via the web:
 
-you get to nodered from your RPI4 localhost:1880 you get to grafana from your RPI4 localhost:3000 you get to portainer from your RPI4 localhost:9000
+you get to nodered from your RPI4 localhost:1880
 
-1. From other PC on local network change localhost to IP address of RPI4
-2. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address &quot;mosquitto:1883&quot;. That&#39;s what you see in the MQTT flow node for nodered.
-3. To run console commands for a container you need to run:
+you get to grafana from your RPI4 localhost:3000 
+
+you get to portainer from your RPI4 localhost:9000
+
+18. From other PC on local network change localhost to IP address of RPI4
+19. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address &quot;mosquitto:1883&quot;. That&#39;s what you see in the MQTT flow node for nodered.
+20. To run console commands for a container you need to run:
 
 docker exec -it \&lt;containername\&gt; bash
 
-1. To configure for my application I need to setup the influxDB first:
+21. To configure for my application I need to setup the influxDB first:
 
 docker exec -it influxdb bash
 
@@ -76,6 +80,6 @@ create user grafana with password &#39;\&lt;passwordhere\&gt;&#39; with all priv
 
 grant all privileges on home to grafana
 
-1. Next you go to the web address for grafana and login with admin, admin then create a new password.
-2. Then you setup a data source for grafana to indicate you&#39;re using an influxdb and put in the username &#39;grafana&#39; and the password you setup. Also database name of &quot;home&quot;
-3. Then you can define a dashboard, panels, and queries. These will chart your data however you want. The micro-controllers govern the influx measurement, in my case, &#39;environment&#39; and individual names like Temperature, Humidity, Pressure, etc.
+22. Next you go to the web address for grafana and login with admin, admin then create a new password.
+23. Then you setup a data source for grafana to indicate you&#39;re using an influxdb and put in the username &#39;grafana&#39; and the password you setup. Also database name of &quot;home&quot;
+24. Then you can define a dashboard, panels, and queries. These will chart your data however you want. The micro-controllers govern the influx measurement, in my case, &#39;environment&#39; and individual names like Temperature, Humidity, Pressure, etc.
