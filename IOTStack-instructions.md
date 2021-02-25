@@ -32,7 +32,10 @@ nodered
 
 poartainer-ce (Optional)
 
-On nodered you will see warning in orange. Use [right arrow] for options to fix. Select &amp; build addons list. [enter] to build addons select go back option back on &quot;select containers to build page&quot;. nodered is now marked pass with no warning 
+On nodered you will see warning in orange. Use [right arrow] for options to fix. 
+With Select and build addons listed, Press enterto build addons. 
+Select go back option. 
+Back on Select Containers to Build page nodered is now marked pass with no warning. 
 
 1. Hit [enter] to start building and [enter] on the mosquitto question about port number.
 2. Exit
