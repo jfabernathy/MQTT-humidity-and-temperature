@@ -34,7 +34,7 @@ poartainer-ce (Optional)
 - Back on Select Containers to Build page nodered is now marked pass with no warning.  
 - Hit [enter] to start building and [enter] on the mosquitto question about port number.
 - Exit
-- **Critical part: edit docer-compose.yml**
+**Critical part: edit docer-compose.yml**
 - Make this change in influxdb section:
 
 image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
