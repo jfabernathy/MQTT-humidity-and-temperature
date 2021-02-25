@@ -39,37 +39,32 @@ I use the IOTStack system that is described at: [https://sensorsiot.github.io/IO
 
 image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 
-12. We are pinning influxdb to version 1.8.4. That should be it but there are some things to be informed about. See [https://github.com/SensorsIot/IOTstack/issues/265](https://github.com/SensorsIot/IOTstack/issues/265)
-13. Everything should be setup. Since we have not setup any passwords for mosquitto the mosquitto.conf should be okay.
-14. Run &quot;docker-compose up -d&quot;
-15. At this point the containers are built and running.
-16. There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
-17. You get to the different containers via the web:
+- We are pinning influxdb to version 1.8.4. That should be it but there are some things to be informed about. See [https://github.com/SensorsIot/IOTstack/issues/265](https://github.com/SensorsIot/IOTstack/issues/265)
+- Everything should be setup. Since we have not setup any passwords for mosquitto the mosquitto.conf should be okay.
+- Run &quot;docker-compose up -d&quot;
+- At this point the containers are built and running.
+- There is a lot to setup, like influxdb database, usernames and passwords for influxdb, grafana, and portainer. Flows for nodered, charts for grafana.
+- You get to the different containers via the web:
 
-- you get to nodered from your RPI4 localhost:1880  
-- you get to grafana from your RPI4 localhost:3000  
-- you get to portainer from your RPI4 localhost:9000  
+-   you get to nodered from your RPI4 localhost:1880  
+-   you get to grafana from your RPI4 localhost:3000  
+-   you get to portainer from your RPI4 localhost:9000  
 
-18. From other PC on local network change localhost to IP address of RPI4
-19. Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That&#39;s what you see in the MQTT flow node for nodered.
-20. To run console commands for a container you need to run:
+- From other PC on local network change localhost to IP address of RPI4
+- Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That&#39;s what you see in the MQTT flow node for nodered.
+- To run console commands for a container you need to run:
 
-docker exec -it \&lt;containername\&gt; bash
+`docker exec -it \&lt;containername\&gt; bash`
 
-21. To configure for my application I need to setup the influxDB first:
+- To configure for my application I need to setup the influxDB first:
 
-docker exec -it influxdb bash
+`docker exec -it influxdb bash`
 
-influx
+`influx`  
+`create database home`  
+`use home`  
+`create user grafana with password &#39;\&lt;passwordhere\&gt;&#39; with all privileges`  
+`grant all privileges on home to grafana`   
 
-create database home
-
-use home
-
-create user grafana with password &#39;\&lt;passwordhere\&gt;&#39; with all privileges
-
-grant all privileges on home to grafana
-
-22. Next you go to the web address for grafana and login with admin, admin then create a new password.
-23. Then you setup a data source for grafana to indicate you&#39;re using an influxdb and put in the username &#39;grafana&#39; and the password you setup. Also database name of &quot;home&quot;
-24. Then you can define a dashboard, panels, and queries. These will chart your data however you want. The micro-controllers govern the influx measurement, in my case, &#39;environment&#39; and individual names like Temperature, Humidity, Pressure, etc.
+- Next you go to the web address for grafana and login with admin, admin then create a new password. Then you setup a data source for grafana to indicate you&#39;re using an influxdb and put in the username &#39;grafana&#39; and the password you setup. Also database name of &quot;home&quot;
+- Then you can define a dashboard, panels, and queries. These will chart your data however you want. The micro-controllers govern the influx measurement, in my case, &#39;environment&#39; and individual names like Temperature, Humidity, Pressure, etc.
