@@ -22,11 +22,11 @@ I use the IOTStack system that is described at: [https://sensorsiot.github.io/IO
 - Now in the IOStack Main Menu with &quot;Build Stack&quot; highlighted (make terminal window large so you can see all of the menu)
 - Go down the list of containers hitting [space] to select the containers you want, which in this case are:
 
-grafana  
-influxdb  
-mosquitto  
-nodered  
-poartainer-ce (Optional)  
+>grafana  
+>influxdb  
+>mosquitto  
+>nodered  
+>poartainer-ce (Optional)  
 
 - On nodered you will see warning in orange. Use [right arrow] for options to fix.  
 - With Select and build addons listed, Press enterto build addons.   
