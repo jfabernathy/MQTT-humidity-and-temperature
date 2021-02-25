@@ -12,7 +12,7 @@ I use the IOTStack system that is described at: [https://sensorsiot.github.io/IO
 2. From the IOTStack Getting Started webpage follow along with the steps below.
 3. Run this command:
 
-curl -fsSL https://raw.githubusercontent.com/SensorsIot/IOTstack/master/install.sh | bash
+`curl -fsSL https://raw.githubusercontent.com/SensorsIot/IOTstack/master/install.sh | bash`
 
 1. At the popup &quot;Docker and Docker-compose not installed and is required&quot;. default is yes, so [enter]
 2. Reboot when done
