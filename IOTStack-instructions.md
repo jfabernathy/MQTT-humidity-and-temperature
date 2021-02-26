@@ -51,7 +51,7 @@ image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 -   you get to portainer from your RPI4 localhost:9000  
 
 - From other PC on local network change localhost to IP address of RPI4
-- Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That&#39;s what you see in the MQTT flow node for nodered.
+- Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That's what you see in the MQTT flow node for nodered.
 - To run console commands for a container you need to run:
 
 `docker exec -it \&lt;containername\&gt; bash`
