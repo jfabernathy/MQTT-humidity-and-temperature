@@ -54,7 +54,7 @@ image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 - Within the docker containers the IPs are aliased, so for example, in nodered you use the IP address **mosquitto:1883**. That's what you see in the MQTT flow node for nodered.
 - To run console commands for a container you need to run:
 
-`docker exec -it \&lt;containername\&gt; bash`
+`docker exec -it "containername" bash`
 
 - To configure for my application I need to setup the influxDB first:
 
@@ -63,7 +63,7 @@ image: &quot;influxdb:latest&quot; to image: &quot;influxdb:1.8.4&quot;
 `influx`  
 `create database home`  
 `use home`  
-`create user grafana with password &#39;\&lt;passwordhere\&gt;&#39; with all privileges`  
+`create user grafana with password "passwordhere" with all privileges`  
 `grant all privileges on home to grafana`   
 
 - Next you go to the web address for grafana and login with admin, admin then create a new password. Then you setup a data source for grafana to indicate you&#39;re using an influxdb and put in the username &#39;grafana&#39; and the password you setup. Also database name of &quot;home&quot;
