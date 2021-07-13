@@ -55,7 +55,7 @@ void setup_wifi() {
   while (status != WL_CONNECTED) {
     delay(1000);
     Serial.print(".");
-    status = WiFi.begin(ssid, password);
+    status = WiFi.status();
   }
 
   Serial.println("");
